@@ -1,0 +1,11 @@
+<h2>Welcome to the Product Test Testing Page!</h2>
+
+<%if user_present?%><p><%= link_to "Create a New Invention!", new_product_path%></p><%end%>
+
+<h3><strong>Product Posts</strong></h3>
+<% if @posts != nil%>
+  <% @posts.each do |post|%>
+  <h4><%= post.title%></h4>
+    <p><%=post.article%></p>
+  <%end%>
+  <%end%>
