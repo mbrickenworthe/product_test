@@ -85,6 +85,21 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @product = Product.find(@post.product_id)
+    @product.delete
+    @post.delete
+    redirect_to root_path
+  end
+
+  def comment_destroy  
+    @comment = Comment.find(params[:format])
+    @post = @comment.post_id
+    @comment.delete
+    redirect_to post_path(@post)
+  end
+
   def comment_params
     params.require(:post).permit(comment: [ :content, :post_id ])
   end

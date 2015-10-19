@@ -4,6 +4,10 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
 
+  def edit
+    @product = Product.find(params[:id])
+  end
+
   def create
     product = Product.new(product_params)
     product
@@ -18,6 +22,18 @@ class ProductsController < ApplicationController
       render :new, :notice => "Please fill in all the fields."
     else
       render :new
+    end
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @post = Post.where(product_id: @product.id).first
+    if @product.update(product_params)
+      redirect_to post_path(@post)
+    elsif product_params[:name].empty? || product_params[:price].empty? || product_params[:desciption].empty?
+      redirect_to edit_product_path(@product), :notice => "Nothing can be blank."
+    else
+      render :edit
     end
   end
 

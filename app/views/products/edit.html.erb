@@ -1,0 +1,15 @@
+<p>Want to tweek that invention??</p>
+
+<%= notice%>
+
+<%= form_for(@product) do |f|%>
+
+<%= f.label "Name" %>
+<%= f.text_field :name, :value => "#{@product.name}"%></br>
+<%= f.label "Selling Price" %>
+<%= f.text_field :price, :value => "#{@product.price}"%></br>
+<%= f.label "Description" %>
+<%= f.text_area :description, :value => "#{@product.description}"%></br>
+<%= f.submit "Now that's a better invention!"%>
+
+<%end%>

@@ -1,7 +1,17 @@
+<%= notice%></br>
+
+<%if user_present?%>
+  <%if current_user.id == @post.user_id%>
+  <%= link_to "Edit Invention", edit_product_path(@post.product_id)%></br>
+  <%= link_to "Edit Post", edit_post_path(@post)%>
+  <%end%>
+<%end%>
+
+
 <h3><%= @post.title%></h3>
 <p><%= @post.article%></p>
 
-<%= notice%>
+
 
 </br>
 <%= form_for @post, url: add_comment_path do |f|%>
@@ -13,17 +23,18 @@
   <%end%>
 <%end%>
 
-<%if user_present?%>
-  <%if current_user.id == @post.user_id%>
-  HEY THERE!!!
-  <%end%>
-<%end%>
+
 
 <%if @post.comments.count > 0%>
   <ul><%@post.comments.each do |comment|%>
     <li><%= comment.content%></li>
         <%= comment.user.name%>
         <%= comment.created_at%>
+        <%if user_present?%>
+          <%if current_user.id == comment.user_id%>
+              <%= link_to 'Destroy', delete_comment_path(comment), :method => :delete %>
+          <%end%>
+        <%end%>
   <%end%>
   </ul>
 <%end%>

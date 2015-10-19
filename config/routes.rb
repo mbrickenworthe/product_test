@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   patch 'add_comment' => 'posts#add_a_comment', :as => 'add_comment'
 
   delete 'this_is_the_sign_out_route' => 'sessions#destroy', :as => 'sign_out'
+  delete 'delete_comment' => 'posts#comment_destroy', :as => 'delete_comment'
 
   resources :sessions
   resources :posts do
