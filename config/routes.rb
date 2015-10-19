@@ -3,12 +3,19 @@ Rails.application.routes.draw do
 
   get 'mad_money' => 'welcome#index'
   get 'this_is_the_sign_up_route' => 'users#new', :as => 'mr_signy'
-  get 'this_is_the_log_in_route' => 'session#new', :as => 'mr_logy'
+  get 'this_is_the_log_in_route' => 'sessions#new', :as => 'mr_logy'
 
-  resources :posts
-  resources :products do
+  put 'upvote/:id' => 'posts#upvote', :as => "upvote"
+  put 'downvote/:id' => 'posts#downvote', :as => "downvote"
+  patch 'add_comment' => 'posts#add_a_comment', :as => 'add_comment'
+
+  delete 'this_is_the_sign_out_route' => 'sessions#destroy', :as => 'sign_out'
+
+  resources :sessions
+  resources :posts do
     resources :comments
   end
+  resources :products 
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

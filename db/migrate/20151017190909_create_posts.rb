@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title
       t.integer :rating, :default => 0
       t.text :article
-      t.references :post
+      t.references :product
       t.references :user
       t.timestamps null: false
     end

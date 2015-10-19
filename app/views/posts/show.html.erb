@@ -1,0 +1,29 @@
+<h3><%= @post.title%></h3>
+<p><%= @post.article%></p>
+
+<%= notice%>
+
+</br>
+<%= form_for @post, url: add_comment_path do |f|%>
+  <% f.fields_for :comment do |com|%>
+    <%= com.label "Comment"%>
+    <%= com.text_field :content%></br>
+    <%= com.hidden_field :post_id, :value => @post.id %>
+    <%= com.submit "Add a comment"%>
+  <%end%>
+<%end%>
+
+<%if user_present?%>
+  <%if current_user.id == @post.user_id%>
+  HEY THERE!!!
+  <%end%>
+<%end%>
+
+<%if @post.comments.count > 0%>
+  <ul><%@post.comments.each do |comment|%>
+    <li><%= comment.content%></li>
+        <%= comment.user.name%>
+        <%= comment.created_at%>
+  <%end%>
+  </ul>
+<%end%>

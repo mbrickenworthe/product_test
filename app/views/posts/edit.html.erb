@@ -1,0 +1,14 @@
+
+<p>We've gone ahead and created a post for you about your invention. Everything look good?</p>
+
+<%= notice%>
+
+<%= form_for(@post) do |f|%>
+
+<%= f.label "Name of the Article" %>
+<%= f.text_field :title, :value => "#{@post.title}"%></br>
+<%= f.label "Article Content" %>
+<%= f.text_area :article, :value => "#{@post.article}"%></br>
+<%= f.submit "Everything looks great!"%>
+
+<%end%>

@@ -11,23 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151017191728) do
+ActiveRecord::Schema.define(version: 20151019020350) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
     t.integer  "post_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
-    t.integer  "rating"
+    t.integer  "rating",     default: 0
     t.text     "article"
-    t.integer  "post_id"
+    t.integer  "product_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -47,6 +48,14 @@ ActiveRecord::Schema.define(version: 20151017191728) do
     t.boolean  "inventor",        default: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+  end
+
+  create_table "votings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.boolean  "voting_record"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end
