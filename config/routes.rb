@@ -7,14 +7,13 @@ Rails.application.routes.draw do
 
   put 'upvote/:id' => 'posts#upvote', :as => "upvote"
   put 'downvote/:id' => 'posts#downvote', :as => "downvote"
-  patch 'add_comment' => 'posts#add_a_comment', :as => 'add_comment'
 
   delete 'this_is_the_sign_out_route' => 'sessions#destroy', :as => 'sign_out'
-  delete 'delete_comment' => 'posts#comment_destroy', :as => 'delete_comment'
 
   resources :sessions
   resources :posts do
     resources :comments
+    resources :votings
   end
   resources :products 
   resources :users
