@@ -15,11 +15,11 @@ class PostsController < ApplicationController
   end
 
   def upvote
-   @post = Post.find(params[:id]) 
+  @post = Post.find(params[:id])
     if user_present?
-      @post.upvote_by(current_user)
+      @post.votings.upvote_post(post: @post, user: current_user)
       redirect_to root_path
-    else
+    else user_present?
       redirect_to root_path, :notice => "You need to be signed in to upvote!"
     end
   end
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   def downvote
   @post = Post.find(params[:id]) 
     if user_present?
-      @post.downvote_by(current_user)
+      @post.votings.downvote_post(post: @post, user: current_user)
       redirect_to root_path
     else
       redirect_to root_path, :notice => "You need to be signed in to downvote!"

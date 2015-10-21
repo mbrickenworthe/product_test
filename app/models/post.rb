@@ -10,13 +10,11 @@ class Post < ActiveRecord::Base
     self.create(title: "#{user_name}'s Invention Idea: #{@product.name}", article: "#{@product.description}", user_id: @product.user_id, product_id: @product.id)
   end 
 
-  def upvote_by(user)
-    self.votings.find_or_create_by(user_id: user.id).update(voting_record: true)
+  def increment_rating
     self.update(rating: (self.rating +=1))
   end
 
-   def downvote_by(user)
-    self.votings.find_or_create_by(user_id: user.id).update(voting_record: false)
+  def decrease_rating
     self.update(rating: (self.rating -=1))
   end
 
