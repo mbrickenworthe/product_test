@@ -10,6 +10,10 @@ class PostsController < ApplicationController
     @comments = @post.comments
   end
 
+  def index
+    redirect_to root_path
+  end
+
   def upvote
    @post = Post.find(params[:id]) 
     if user_present?
@@ -31,7 +35,6 @@ class PostsController < ApplicationController
   end
 
   def update
-    binding.pry
     @post = Post.find(params[:id])
     if @post.update(post_params)
       redirect_to root_path, :notice => "Your new post has been added!"
@@ -47,6 +50,8 @@ class PostsController < ApplicationController
     @post.destroy_post_product_and_comments
     redirect_to root_path
   end
+
+  private
 
   def post_params
     params.require(:post).permit(:title, :article)

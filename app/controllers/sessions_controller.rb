@@ -4,10 +4,9 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to root_path, :notice => "Testing Notice"
+      redirect_to root_path, :notice => "Welcome back, #{@user.name}"
     else
-      flash.now.alert = "Invalid email or password"
-      render :new
+      redirect_to mr_logy_path, :notice => "Invalid email or password"
     end
   end
 

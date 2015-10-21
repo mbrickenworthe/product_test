@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'mad_money' => 'welcome#index'
-  get 'this_is_the_sign_up_route' => 'users#new', :as => 'mr_signy'
-  get 'this_is_the_log_in_route' => 'sessions#new', :as => 'mr_logy'
+  get 'sign_up' => 'users#new', :as => 'mr_signy'
+  get 'log_in' => 'sessions#new', :as => 'mr_logy'
 
   put 'upvote/:id' => 'posts#upvote', :as => "upvote"
   put 'downvote/:id' => 'posts#downvote', :as => "downvote"

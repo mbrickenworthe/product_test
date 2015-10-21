@@ -4,20 +4,22 @@
 <%if user_present?%><p><%= link_to "Create a New Invention!", new_product_path%></p><%end%>
 
 <h3><strong>Product Posts</strong></h3>
-<% if @posts != nil%>
-  <% @posts.each do |post|%>
+<% if @posts%>
+-------------------------------------------
+  <% @posts.each do |post|%></br>
+  -------------------------------------------
     <a href="/posts/<%=post.id%>"><h4><%= post.title%></h4></a>
     <p><%=post.article%></p>
-    <%if user_present?%>
-      <%if current_user.id == post.user_id%>
-        Rating: <%=post.rating%>
-      <%else%>
-      <%=link_to "Upvote", upvote_path(post), method: :put %>Rating: <%=post.rating%><%=link_to "Downvote", downvote_path(post), method: :put %>
-      <%end%>
-      <%if current_user.id == post.user_id%>
-        <%=link_to "Edit Post", edit_post_path(post)%></br>
-        <%=link_to "Delete Invention and Post", "/posts/#{post.id}", method: :delete%>
-      <%end%>
+    <%if user_present? && current_user.id == post.user_id %>
+      Rating: <%=post.rating%>
+    <%else%>
+      <%=link_to "Upvote", upvote_path(post), method: :put %>
+      Rating: <%=post.rating%>
+      <%=link_to "Downvote", downvote_path(post), method: :put %>
+    <%end%>
+    <%if user_present? && current_user.id == post.user_id%></br>
+      <%=link_to "Edit Post", edit_post_path(post)%></br>
+      <%=link_to "Delete Invention and Post", "/posts/#{post.id}", method: :delete%>
     <%end%>
   <%end%>
 <%end%>

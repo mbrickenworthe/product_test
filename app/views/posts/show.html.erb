@@ -20,6 +20,7 @@
       <%= com.label "Comment"%>
       <%= com.text_field :content%></br>
       <%= com.hidden_field :post_id, :value => @post.id %>
+      <%= com.hidden_field :user_id, :value => current_user.id %>
       <%= com.submit%>
     <%end%>
   <%end%>
