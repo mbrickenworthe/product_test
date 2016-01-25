@@ -5,7 +5,6 @@ class CreateProducts < ActiveRecord::Migration
       t.decimal :price
       t.text :description
       t.references :user
-      t.references :post
 
       t.timestamps null: false
     end

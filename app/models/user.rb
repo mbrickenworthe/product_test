@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :products
-  has_many :posts
+  has_many :posts, through: :products
   has_many :comments
   has_many :votings
 

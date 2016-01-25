@@ -1,14 +1,14 @@
-<h6>Top of the Header</h6>
+<div class="header">
+  <div class="links">
+  <%if user_present? == false%>
+  <%= link_to "New User? Click Here!", mr_signy_path %></br></br>
+  <%= link_to "Already a User? Click Here", mr_logy_path%></br></br>
+  <%end%>
 
-<%if user_present? == false%>
-<%= link_to "New User? Click Here!", mr_signy_path %></br></br>
-<%= link_to "Already a User? Click Here", mr_logy_path%></br></br>
-<%end%>
-
-<%= link_to "Click Here for Home Page", root_path%></br>
-<%if user_present?%>
-<p>Welcome, <%= current_user.name%>!</p>
-<%= link_to "Sign Out", sign_out_path, method: :delete%>
-<%end%>
-
-</br><h6>Bottom of the Header</h6>
+  <%= link_to "Click Here for Home Page", root_path%></br>
+  <%if user_present?%>
+  <div>Welcome, <%= current_user.name%>!</div>
+  <%= link_to "Sign Out", sign_out_path, method: :delete%>
+  <%end%>
+  </div>
+</div>

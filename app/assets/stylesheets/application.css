@@ -15,3 +15,44 @@
  */
 
 //= require style_sheet
+
+.footer {
+  border-top: dashed;
+  padding: 5px;
+  margin: 20px 0px;
+}
+
+.header {
+  border-bottom: dashed;
+  padding: 0px 0px 20px 0px;
+}
+
+.votes {
+  border: solid;
+  border-color: #464545;
+  padding: 2px;
+  background: #464545 ;
+  margin: 0px 5px 0px 5px;
+  font-size: 12px;
+}
+.votes:hover {
+  border-color: #008966;
+  background-color: #008966;
+  color: #464545;
+  text-decoration: none;
+}
+
+.footer h6 {
+  margin: 1px;
+}
+
+.footer img {
+  margin: 0px 5px 0px 5px;
+}
+
+.footer img:hover {
+  cursor: default;
+}
+
+
+

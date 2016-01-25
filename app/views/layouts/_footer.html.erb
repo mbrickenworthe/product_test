@@ -1,2 +1,9 @@
-</br><h6>Top of the Footer</h6>
-<h6>Bottom of the Footer</h6>
+<div class="footer">
+<h6>Created by Adam Winters</h6>
+<a href='https://github.com/mbrickenworthe' class= "links"><%= image_tag('/pictures/github.png', size: "16x16")%></a>
+<a href='https://learn.co/mbrickenworthe' class= "links"><%= image_tag('/pictures/learn.png', size: "16x16")%></a>
+<a href='https://www.linkedin.com/in/adamrwinters' class= "links"><%= image_tag('/pictures/linkedin.png', size: "16x16")%></a>
+<a href='https://teamtreehouse.com/adamw' class= "links"><%= image_tag('/pictures/treehouse.png', size: "16x16")%></a>
+<%= mail_to "adamwinters456@gmail.com", image_tag('/pictures/gmail.png', size: "16x16", alt: "Gmail"), :class => "links"%>
+</div>
+

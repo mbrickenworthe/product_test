@@ -14,15 +14,15 @@
 
 
 </br>
-<%if user_present?%>
-  <%= form_for @post, url: new_post_comment_path(@post), method: :get do |f|%>
-    <% f.fields_for :comment do |com|%>
-      <%= com.label "Comment"%>
-      <%= com.text_field :content%></br>
-      <%= com.hidden_field :post_id, :value => @post.id %>
+<%= form_for @post, url: new_post_comment_path(@post), method: :get do |f|%>
+  <% f.fields_for :comment do |com|%>
+    <%= com.label "Comment"%>
+    <%= com.text_field :content%></br>
+    <%= com.hidden_field :post_id, :value => @post.id %>
+    <%if user_present?%>
       <%= com.hidden_field :user_id, :value => current_user.id %>
-      <%= com.submit%>
     <%end%>
+    <%= com.submit "Create Comment"%>
   <%end%>
 <%end%>
 
@@ -31,8 +31,12 @@
 <%if @comments.count > 0%>
   <ul><% @comments.each do |comment|%>
     <li><%= comment.content%></li>
-        <%= comment.user.name%>
-        <%= comment.created_at%>
+        <% if comment.user == nil %>
+          <%= "Anonymous" %>
+        <% else %>
+          <%= comment.user.name%>
+        <% end %>
+        <%= comment.created_at.strftime("%b %d, %Y") %>
         <%if user_present? && current_user.id == comment.user_id %>
           <%= link_to 'Destroy', post_comment_path(@post, comment), :method => :delete %>
         <%end%>
