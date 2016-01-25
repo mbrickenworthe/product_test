@@ -24,7 +24,7 @@ class Voting < ActiveRecord::Base
     @post.decrease_rating
   end
 
-  def self.upvote_post(post:, user:)
+  def self.upvote_post(post, user)
     @post = post
     @user = user
     if !user_has_voting_record? 
@@ -35,9 +35,9 @@ class Voting < ActiveRecord::Base
     end
   end
 
-   def self.downvote_post(post:, user:)
-    @post = post
-    @user = user
+  def self.downvote_post(post, user)
+  @post = post
+  @user = user
     if !user_has_voting_record? 
       downvoting_record
     elsif user_has_voting_record? && current_vote
